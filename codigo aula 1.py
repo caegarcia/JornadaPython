@@ -11,7 +11,7 @@
 import pyautogui #roda no terminal pip install pyautogui
 import time
 
-pyautogui.PAUSE = 0.5
+pyautogui.PAUSE = 0.5 #tempo de espera entre todos os comandos do pyautogui
 
 pyautogui.press ("win")
 pyautogui.write ("chrome")
@@ -19,7 +19,7 @@ pyautogui.press ("enter")
 
 time.sleep(3)
 
-pyautogui.click (x=765, y=608, clicks = 2, button = "left") #passo para selecionar o usuario no chrome
+pyautogui.click (x=4046, y=449, clicks = 1, button = "left") #passo para selecionar o usuario no chrome
 
 link = "https://dlp.hashtagtreinamentos.com/python/intensivao/login"
 
@@ -27,17 +27,17 @@ pyautogui.write (link)
 
 pyautogui.press ("enter")
 
-time.sleep(3)
+time.sleep(5) #pausa apenas nessa passagem
+
+pyautogui.click(3693, y=599)
 
 login ="pythonimpressionador@gmail.com"
 
-pyautogui.click (x=704, y=614)
 pyautogui.write (login)
-
-senha = "1234"
 
 pyautogui.press ("tab")
 
+senha = "1234"
 pyautogui.write (senha)
 
 pyautogui.press ("tab")
@@ -49,5 +49,30 @@ import pandas
 
 tabela = pandas.read_csv("C:/Users/SOUSAC13/OneDrive - Heineken International/Caetano/#Treinamentos/produtos.csv")
 
+for linha in tabela.index:
+    pyautogui.click(x=3672, y=425)
+    codigo = tabela.loc[linha, "codigo"] #voce pode fazer assim e pedir pra ele escrever a variavel, ou pode pedir pra ele escrever direto a localizacao
+    marca = tabela.loc[linha, "marca"]
+
+    pyautogui.write(str(codigo))
+    pyautogui.press ("tab")
+    pyautogui.write(str(tabela.loc[linha, "marca"]))
+    pyautogui.press ("tab")
+    pyautogui.write(str(tabela.loc[linha, "tipo"]))
+    pyautogui.press ("tab")
+    pyautogui.write(str(tabela.loc[linha, "categoria"]))
+    pyautogui.press ("tab")
+    pyautogui.write(str(tabela.loc[linha, "preco_unitario"]))
+    pyautogui.press ("tab")
+    pyautogui.write(str(tabela.loc[linha, "custo"]))
+    pyautogui.press ("tab")
+
+    obs = tabela.loc[linha, "obs"]
+        if not pandas.isna(obs):
+            pyautogui.write(str(tabela.loc[linha, "obs"]))
+   
+    pyautogui.press ("tab")
+
+    pyautogui.scroll(500)
 
 
