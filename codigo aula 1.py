@@ -68,11 +68,13 @@ for linha in tabela.index:
     pyautogui.press ("tab")
 
     obs = tabela.loc[linha, "obs"]
-        if not pandas.isna(obs):
+    if not pandas.isna(obs):
             pyautogui.write(str(tabela.loc[linha, "obs"]))
    
     pyautogui.press ("tab")
 
     pyautogui.scroll(500)
+
+#Fim de looping
 
 
